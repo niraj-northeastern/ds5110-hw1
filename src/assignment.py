@@ -1,10 +1,14 @@
 # Coffee Cart Sales Analysis
 
+from pathlib import Path
 import pandas as pd
 import matplotlib.pyplot as plt
 
-df = pd.read_csv("https://raw.githubusercontent.com/niraj-northeastern/DS5110/refs/heads/main/HW1_/data/raw/coffee_sales.csv")
+DATA_URL = "https://raw.githubusercontent.com/niraj-northeastern/ds5110-hw1/refs/heads/main/data/raw/coffee_sales.csv"
+OUT = Path(__file__).resolve().parents[1] / "output"
+OUT.mkdir(exist_ok=True)
 
+df = pd.read_csv(DATA_URL)
 
 df["revenue"] = df["quantity"] * df["unit_price"]
 
@@ -37,7 +41,7 @@ by_product = df.groupby("product")["revenue"].sum()
 by_product.plot(kind="bar")
 plt.ylabel("Total revenue ($)")
 plt.title("Revenue by product")
-plt.savefig("ROOT output/revenue_by_product.png")
+plt.savefig(OUT / "revenue_by_product.png")
 plt.show()
 
 # Takeaway
