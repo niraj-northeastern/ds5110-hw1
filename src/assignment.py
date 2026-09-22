@@ -5,13 +5,21 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import pandas as pd
+from urllib.error import URLError
 
 
 DATA_URL = "https://raw.githubusercontent.com/niraj-northeastern/ds5110-hw1/refs/heads/main/data/raw/coffee_sales.csv"
+LOCAL_RAW = Path(__file__).resolve().parents[1] / "data" / "raw" / "coffee_sales.csv"
 OUT = Path(__file__).resolve().parents[1] / "output"
 OUT.mkdir(exist_ok=True)
 
-df = pd.read_csv(DATA_URL)
+#try-except block to handle url failure
+try:
+    df = pd.read_csv(DATA_URL)
+    print("Data from Github URL")
+except (URLError, OSError) as e:
+    print("Data from Local path")
+    df = pd.read_csv(LOCAL_RAW)
 
 df["revenue"] = df["quantity"] * df["unit_price"]
 
