@@ -3,7 +3,8 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-df = pd.read_csv("/Users/shruti.patil/Desktop/DS5110/HW1/data/raw/coffee_sales.csv")
+df = pd.read_csv("https://raw.githubusercontent.com/niraj-northeastern/DS5110/refs/heads/main/HW1_/data/raw/coffee_sales.csv")
+
 
 df["revenue"] = df["quantity"] * df["unit_price"]
 
@@ -36,7 +37,7 @@ by_product = df.groupby("product")["revenue"].sum()
 by_product.plot(kind="bar")
 plt.ylabel("Total revenue ($)")
 plt.title("Revenue by product")
-plt.savefig("/Users/shruti.patil/desktop/DS5110/HW1/output/revenue_by_product.png")
+plt.savefig("ROOT output/revenue_by_product.png")
 plt.show()
 
 # Takeaway
