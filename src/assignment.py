@@ -4,6 +4,7 @@ from pathlib import Path
 import pandas as pd
 import matplotlib.pyplot as plt
 
+
 DATA_URL = "https://raw.githubusercontent.com/niraj-northeastern/ds5110-hw1/refs/heads/main/data/raw/coffee_sales.csv"
 OUT = Path(__file__).resolve().parents[1] / "output"
 OUT.mkdir(exist_ok=True)
@@ -41,8 +42,10 @@ by_product = df.groupby("product")["revenue"].sum()
 by_product.plot(kind="bar")
 plt.ylabel("Total revenue ($)")
 plt.title("Revenue by product")
+matplotlib.use("Agg")  
 plt.savefig(OUT / "revenue_by_product.png")
 plt.show()
+
 
 # Takeaway
 # Drip coffee brings in the lowest total revenue this month. Latte brings in the highest total revenue this month
