@@ -1,0 +1,5 @@
+Average daily revenue: $158.25
+Group A mean revenue: 52.77
+Group B mean revenue: 52.73
+Group A mean daily revenue: 154.55
+Group B mean daily revenue: 161.95
