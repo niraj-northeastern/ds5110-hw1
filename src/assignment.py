@@ -1,8 +1,10 @@
 # Coffee Cart Sales Analysis
 
 from pathlib import Path
-import pandas as pd
+import matplotlib
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+import pandas as pd
 
 
 DATA_URL = "https://raw.githubusercontent.com/niraj-northeastern/ds5110-hw1/refs/heads/main/data/raw/coffee_sales.csv"
@@ -42,9 +44,8 @@ by_product = df.groupby("product")["revenue"].sum()
 by_product.plot(kind="bar")
 plt.ylabel("Total revenue ($)")
 plt.title("Revenue by product")
-matplotlib.use("Agg")  
 plt.savefig(OUT / "revenue_by_product.png")
-plt.show()
+plt.close()
 
 
 # Takeaway
